@@ -25,7 +25,6 @@ Recommended requirements
 Ubuntu 16.04.1
 PHP v7.0.18
 Mysql  v14.14
-
 ```
 
 ### Installing
@@ -80,6 +79,8 @@ or
 ```
 sudo rm -rf var/cache/* && sudo rm -rf var/logs/*
 ```
+
+Compile assetic
 
 ```
 php bin/console assetic:dump
