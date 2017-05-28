@@ -16,7 +16,7 @@
 /web/bundles/
 .idea/*
 var/*
-css/*
+web/css/*
 web/js/*
 web/bundles/*
 web/assetic/*
