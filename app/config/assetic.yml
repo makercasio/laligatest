@@ -1,0 +1,41 @@
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    filters:
+      cssrewrite: ~
+      compass:
+        images_dir: "%kernel.root_dir%/../web/images/"
+        generated_images_path: %kernel.root_dir%/../web/images
+        http_path:  /
+        timeout: 360
+        cache_location: %kernel.cache_dir%
+      yui_css:
+        jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.8.jar"
+      yui_js:
+        jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.8.jar"
+    assets:
+      liga_js:
+        inputs:
+          - '@BackendBundle/Resources/public/liga/js/utils/jquery-3.2.1.min.js'
+          - '@BackendBundle/Resources/public/liga/js/utils/bootstrap.js'
+          - '@BackendBundle/Resources/public/liga/js/utils/select2.min.js'
+          - '@BackendBundle/Resources/public/liga/js/main.js'
+          - '@BackendBundle/Resources/public/liga/js/start.js'
+        filters:
+          - ?yui_js
+      liga_scss:
+        inputs:
+          - '@BackendBundle/Resources/public/liga/css/common.scss'
+        filters:
+          - cssrewrite
+          - compass
+          - ?yui_css
+      liga_css:
+          inputs:
+            - '@BackendBundle/Resources/public/liga/css/utils/bootstrap-theme.css'
+            - '@BackendBundle/Resources/public/liga/css/utils/bootstrap.css'
+            - '@BackendBundle/Resources/public/liga/css/utils/select2.min.css'
+          filters:
+            - cssrewrite
+            - ?yui_css

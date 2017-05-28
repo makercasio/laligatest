@@ -1,0 +1,37 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+
+services:
+    ### REPOSITORIES
+    liga.parent.repository.arguments:
+        abstract:  true
+        arguments: ['@doctrine.orm.entity_manager', '@logger']
+
+    liga.club.repository.service:
+            class: BackendBundle\Services\Liga\RepositoryServices\ClubRepositoryService
+            parent: liga.parent.repository.arguments
+
+    liga.jugador.repository.service:
+          class: BackendBundle\Services\Liga\RepositoryServices\JugadorRepositoryService
+          parent: liga.parent.repository.arguments
+
+    ### SERVICES
+    liga.club.service:
+          class: BackendBundle\Services\Liga\EntityServices\ClubService
+          arguments: ['@liga.club.repository.service', '@liga.jugador.repository.service']
+
+    liga.jugador.service:
+          class: BackendBundle\Services\Liga\EntityServices\JugadorService
+          arguments: ['@liga.jugador.repository.service', '@liga.club.repository.service']
+
+    ### FORMS
+    liga.form.jugador:
+          class: BackendBundle\Form\JugadorType
+          tags:
+             - { name: form.type, alias: backendbundle_jugadortype }
+
+    liga.form.club:
+        class: BackendBundle\Form\ClubType
+        arguments: ['@liga.jugador.repository.service']
+        tags:
+            - { name: form.type, alias: backendbundle_clubtype }

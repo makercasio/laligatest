@@ -1,0 +1,2 @@
+imports:
+    - { resource: liga/services/liga_services.yml }

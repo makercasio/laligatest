@@ -1,0 +1,58 @@
+{% extends "BackendBundle:Default:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+    <article class="long_grid">
+        <div class="action-buttons">
+            <a href="{{ path('jugador_new') }}" class="btn btn-sm btn-success" role="button">
+                <span class="glyphicon glyphicon-plus"></span>
+                Nuevo Jugador
+            </a>
+        </div>
+
+        {% if contents|length %}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Club</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for content in contents %}
+                    {% set club = content.club %}
+                    <tr>
+                        <td class="col-xs-4">
+                            <a href="{{ path('jugador_edit', {'id': content.id }) }}">
+                                {{ content.nombre }}
+                            </a>
+                        </td>
+                        <td class="col-xs-5">
+                            {% if club and not club.borrado %}
+                                <a href="{{ path('club_edit', {'id': club.id }) }}">
+                                    {{ club.getNombre() }}
+                                </a>
+                            {% else %}
+                                {{ 'NA' }}
+                            {% endif %}
+                        </td>
+
+                        <td class="col-xs-3 col-actions">
+                            <a href="{{ path('jugador_edit', {'id': content.id }) }}" class="btn btn-sm btn-success" role="button">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                Editar
+                            </a>
+
+                            <a href="{{ path('jugador_delete', {'id': content.id }) }}" class="btn btn-sm btn-danger" role="button">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Borrar
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </article>
+{% endblock %}

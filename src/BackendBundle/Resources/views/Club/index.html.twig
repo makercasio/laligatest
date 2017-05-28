@@ -1,0 +1,81 @@
+{% extends "BackendBundle:Default:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+    <article class="long_grid">
+        <div class="action-buttons">
+            <a href="{{ path('club_new') }}" class="btn btn-sm btn-success" role="button">
+                <span class="glyphicon glyphicon-plus"></span>
+                Nuevo Club
+            </a>
+        </div>
+
+        {% if contents|length %}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Jugadores</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for content in contents %}
+                    {% set jugadores = content.jugadores %}
+
+                    <tr>
+                        <td class="col-xs-3">
+                            <a href="{{ path('club_edit', {'id': content.id }) }}">
+                                {{ content.nombre }}
+                            </a>
+                        </td>
+
+                        <td class="col-xs-3">
+                            {% if content.telefono is not empty %}
+                                {{ content.telefono }}
+                            {% else %}
+                                NA
+                            {% endif %}
+                        </td>
+
+                        <td class="col-xs-3">
+                            {% if jugadores|length %}
+                                {% for jugador in jugadores|slice(0, 4) %}
+                                    <a href="{{ path('jugador_edit', {'id': jugador.id }) }}">
+                                        {{ jugador.nombre }}
+                                    </a>
+                                    {% if loop.last %}
+                                        {% if jugadores|length > loop.index %}
+                                            ...
+                                        {% endif %}
+                                    {% else %}
+                                        ,
+                                    {% endif %}
+                                {% endfor %}
+
+                            {% else %}
+                                NA
+                            {% endif %}
+                        </td>
+
+                        <td class="col-xs-3 col-actions">
+                            <a href="{{ path('club_edit', {'id': content.id }) }}" class="btn btn-sm btn-success" role="button">
+                                <span class="glyphicon glyphicon-edit"></span>
+                                Editar
+                            </a>
+
+                            <a href="{{ path('club_delete', {'id': content.id }) }}" class="btn btn-sm btn-danger" role="button">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Borrar
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+
+    </article>
+{% endblock %}

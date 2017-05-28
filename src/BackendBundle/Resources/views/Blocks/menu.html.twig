@@ -1,0 +1,25 @@
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                    <span class="glyphicon glyphicon-folder-close"></span>
+                    Contenidos
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-tower text-success"></span>
+                    <a href="{{ path('clubs') }}">Clubs</a>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="glyphicon glyphicon-user text-success"></span>
+                    <a href="{{ path('jugadores') }}">Jugadores</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

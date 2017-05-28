@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.gi-1x{
+    font-size: 1em;
+}
+
+.gi-2x{
+    font-size: 2em;
+}
+
+.gi-3x{
+    font-size: 3em;
+}
+
+.gi-4x{
+    font-size: 4em;
+}
+
+.gi-5x{
+    font-size: 5em;
+}
+
+body{
+    .select2-container--default,
+    .select2-container--focus {
+        .select2-selection--multiple {
+            border: 1px solid #cccccc !important;
+        }
+    }
+}

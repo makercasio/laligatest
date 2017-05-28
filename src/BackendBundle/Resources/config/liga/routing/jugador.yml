@@ -1,0 +1,26 @@
+jugadores:
+    path:  /
+    defaults: { _controller: "BackendBundle:Jugador:index" }
+
+jugador_new:
+    path:  /new
+    defaults: { _controller: "BackendBundle:Jugador:new" }
+
+jugador_create:
+    path:  /create
+    defaults: { _controller: "BackendBundle:Jugador:create" }
+    methods: POST
+
+jugador_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "BackendBundle:Jugador:edit" }
+
+jugador_update:
+    path:  /{id}/update
+    defaults: { _controller: "BackendBundle:Jugador:update" }
+    methods: POST
+
+jugador_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "BackendBundle:Jugador:delete" }
+    methods: GET

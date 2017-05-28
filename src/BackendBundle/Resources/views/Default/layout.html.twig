@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block head %}
+    {% include 'BackendBundle:Blocks:header.html.twig' with { title: 'La Liga', section: section|default('') } only %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            {% include 'BackendBundle:Blocks:menu.html.twig' only %}
+        </div>
+        <div class="col-sm-9 col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Panel de configuración</h3>
+                </div>
+                <div class="panel-body">
+                    {% include 'BackendBundle:Blocks:notifications.html.twig' only %}
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

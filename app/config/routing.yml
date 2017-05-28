@@ -1,0 +1,11 @@
+homeliga:
+    path:  /
+    defaults: { _controller: "BackendBundle:Default:show" }
+
+BackendBundle_jugador:
+    resource: '@BackendBundle/Resources/config/liga/routing/jugador.yml'
+    prefix:   /jugadores
+
+BackendBundle_club:
+    resource: '@BackendBundle/Resources/config/liga/routing/club.yml'
+    prefix:   /clubs
